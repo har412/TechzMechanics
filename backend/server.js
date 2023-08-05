@@ -1,5 +1,6 @@
 const express = require('express')
-
+const dotenv= require('dotenv')
+dotenv.config()
 const app = express();
 
 const cors = require('cors')
@@ -8,7 +9,7 @@ app.use(cors({origin:"*"}))
 app.use(express.json())
 
 var SibApiV3Sdk = require('sib-api-v3-sdk');
-SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = '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';
+SibApiV3Sdk.ApiClient.instance.authentications['api-key'].apiKey = process.env.API_KEY;
 
 app.post('/send-message',(req,res)=>{
 
